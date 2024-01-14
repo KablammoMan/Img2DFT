@@ -1,5 +1,5 @@
 const test = []
-const circle_rad_mod = 1;
+const circle_rad_mod = 2;
 let pos = [];
 let dftTest;
 let angleOffset = 0;
@@ -75,7 +75,7 @@ function dftc(x){
     }
     return X;
 }
-// Discrete Fourier Transform for Real Numbers
+// Discrete Fourier Transform for Real Numbers ONLY
 function dftr(x){
     let N = x.length;
     let X = [];
