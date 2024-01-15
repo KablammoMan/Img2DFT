@@ -5,7 +5,7 @@ An attempt to make something where users can upload an image and then that image
 ![Discrete Fourier Transformation Formula](https://github.com/KablammoMan/Img2DFT/assets/83634185/152ffcbc-ab02-4909-b843-5598d2f147a2)
 
 ## How to Use
-Download source and open `index.html` in a browser of your choice. Click on the "Browse" button and choose any image on your machine. Once the image is loaded, click anywhere and begin drawing an outline of what you want (note that where you end will connect back to the start). Once you have finished the outline, click the "Submit" that appeared to begin processing the image. DFT will be applied, the image will disappear and circles will recreate the image.
+Download source and open `index.html` in a browser of your choice. Click on the "Browse" button and choose any image on your machine. Once the image is loaded, click anywhere and begin drawing an outline of what you want (note that where you end will connect back to the start). Once you have finished the outline, click the "Submit" button that appeared to begin processing the image. DFT will be applied, the image will disappear and circles will recreate the image.
 
 ### What is `imageContrastGen.py`?
 At first I wanted to make a python script that when you gave it an image, it would determine contrast and output a grayscale image where black means no contrast and white means lots of contrast. I was then going to make an algorithm to generate a path over it for the circles to trace, however, I soon realised that this would be an exceptionally tedious task that may not even produce what the user desires. The coordinates of said path were then going to be outputted into a list that you could paste into `sketch.js` as the value for `test`.
