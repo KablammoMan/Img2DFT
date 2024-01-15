@@ -134,7 +134,7 @@ function dftr(x){
 }
 function handleImage(file) {
     if (file.type != "image") {
-        return alert("Submit a fucking image in ya dip shit")
+        return alert("Submit an image to outline!")
     }
     img = createImg(file.data)
     img.hide()
