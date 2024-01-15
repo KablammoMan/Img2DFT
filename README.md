@@ -4,7 +4,7 @@ An attempt to make something where users can upload an image and then that image
 
 ![Discrete Fourier Transformation Formula](https://github.com/KablammoMan/Img2DFT/assets/83634185/152ffcbc-ab02-4909-b843-5598d2f147a2)
 
-It is draw using Processing's `p5.js`
+It is drawn using Processing's `p5.js`
 
 ## How to Use
 Download source and open `index.html` in a browser of your choice. Click on the "Browse" button and choose any image on your machine. Once the image is loaded, click anywhere and begin drawing an outline of what you want (note that where you end will connect back to the start). Once you have finished the outline, click the "Submit" button that appeared to begin processing the image. DFT will be applied, the image will disappear and circles will recreate the image.
