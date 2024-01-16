@@ -20,11 +20,11 @@ function setup() {
     sub.attribute("class", "btn btn-warning w-100");
     sub.mousePressed(() => {
         ready = true;
-        reset.show();
         dftTest = dftc(test);
         dftTest.sort((a,b) => b.amp-a.amp);
+        sub.hide();
+        reset.show();
     });
-    sub.hide();
     sub.parent("input");
     reset.attribute("class", "btn btn-danger w-100");
     reset.mousePressed(() => {
@@ -33,9 +33,9 @@ function setup() {
         dftTest = [];
         ready = false;
         inp_head.html("Upload an Image", false);
-        img = null;
         angleOffset = 0;
         reset.hide();
+        sub.show();
     });
     reset.hide();
     reset.parent("input")
@@ -50,14 +50,11 @@ function draw() {
         let scaley = height/img.height;
         let scale = min(scalex, scaley);
         image(img, width/2, height/2, img.width * scale, img.height * scale);
-        inp.hide();
-        sub.show();
     }
     let LEN = test.length;
     if (ready) {
         inp_head.html("Watch as Circles Redraw the Outline", false)
         strokeWeight(3)
-        sub.hide();
         background(127);
         let finX = width/2;
         let finY = height/2;
@@ -88,13 +85,12 @@ function draw() {
         endShape();
         angleOffset += 2 * PI / LEN
     } else {
-        inp.show();
-        strokeWeight(10)
-        if (mouseIsPressed && img) {
+        strokeWeight(10);
+        if (mouseIsPressed && mouseX > 0 && mouseY > 0 && mouseX <= width && mouseY <= height) {
             test.push([mouseX-width/2, mouseY-height/2])
         }
         if (frameCount % 10 == 0) {
-            stroke(random(0, 255))
+            stroke(random(0, 255));
         }
         for (let pnti = 0; pnti < test.length; pnti++) {
             if (pnti == 0) {
