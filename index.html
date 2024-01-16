@@ -10,6 +10,76 @@
     <script src="https://cdn.jsdelivr.net/npm/p5/lib/p5.min.js" integrity="sha256-cmrJZia5P1vK/4OpELbGDTqXKPBj4OtztdCBn/w1aRU=" crossorigin="anonymous"></script>
     <script src="sketch.js"></script>
 </head>
-<body id="body">
+<body data-bs-theme="light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark py-3" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand">Image2DFT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#what">What is DFT?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how">How is DFT used?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#project">The Project</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- What is DFT? -->
+    <section class="py-3 bg-primary text-light" id="what">
+        <div class="container-md">
+            <p class="fs-1 text-center mb-3 fw-bold">What on earth is DFT?</p>
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 mb-3">
+                    <p class="fs-6">
+                        DFT stands for Discrete Fourier Transform and is used to split one wave into multiple waves of differing frequencies.
+                        Although fourier transforms are technically calculated using integration, DFT uses summation so that it can be computed (computers unfortunately cannot count to infinity, which is required for integration).
+                        The formula is pictured <span class="d-none d-md-inline">to the right</span><span class="d-md-none">below</span> and requires knowledge of the complex number system to use.
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <img class="img-fluid" src="dft_formula.png">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How DFT is used here? -->
+    <section class="py-3 bg-info" id="how">
+        <div class="container-md">
+            <p class="fs-1 text-center mb-3 fw-bold">How is DFT Utilised Here?</p>
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 mb-3">
+                    <p class="fs-6">
+                        There are two ways that DFT can be utilised in this program.
+                        <br>
+                        <br>
+                        The algorithm pictured <span class="d-none d-md-inline">to the right</span><span class="d-md-none">below</span>
+                        is used for my main purpose of developing this application. It takes in an list of coordinates as inputs, runs it through the DFT algorithm and outputs information to draw the multitude of waves (as circles).
+                        <br>
+                        <br>
+                        The second way (currently not implemented) is by just passing in a series of y coordinates, it can recreate any wave as a multitude of waves with differing frequencies (once again, depicted as circles) assuming that the previous points are moving away (x axis is time).
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <img class="img-fluid"src="dftc_algorithm.png">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Image Input -->
+    <section class="py-3 bg-primary text-light" id="project">
+        <div class="container-md mb-3" id="input">
+            <p class="fs-4 text-center fw-bold">Upload an Image</p>
+        </div>
+    </section>
+    <main></main>
 </body>
 </html>

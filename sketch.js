@@ -1,51 +1,66 @@
-const test = [] // YOUR INPUT COORDINATES (IT WILL GO IN THE ORDER THAT YOU GIVE)
+let test = []
 const circle_rad_mod = 1; // Scales the drawing
 let ready = false;
+let reset;
 let sub;
 let inp;
-let container;
+let inp_head;
 let pos = [];
-let dftTest;
+let dftTest = [];
 let img = null;
 let angleOffset = 0;
 function setup() {
-    container = createDiv();
-    container.parent("body");
-    container.position(0,0);
-    container.attribute("class", "container")
-    inp = createFileInput(handleImage, false)
-    inp.attribute("accept", "image/*")
-    inp.attribute("class", "form-control")
-    container.child(inp)
+    inp = createFileInput(handleImage, false);
     sub = createButton("Submit");
-    sub.attribute("class", "btn btn-primary")
-    sub.hide();
+    reset = createButton("Stop");
+    inp_head = select("p", "#input");
+    inp.attribute("accept", "image/*");
+    inp.attribute("class", "form-control mb-3");
+    inp.parent("input");
+    sub.attribute("class", "btn btn-warning w-100");
     sub.mousePressed(() => {
         ready = true;
+        reset.show();
         dftTest = dftc(test);
-        dftTest.sort((a,b) => b.amp-a.amp)
+        dftTest.sort((a,b) => b.amp-a.amp);
     });
-    container.child(sub)
-    createCanvas(windowWidth, windowHeight);
+    sub.hide();
+    sub.parent("input");
+    reset.attribute("class", "btn btn-danger w-100");
+    reset.mousePressed(() => {
+        test = [];
+        pos = [];
+        dftTest = [];
+        ready = false;
+        inp_head.html("Upload an Image", false);
+        img = null;
+        angleOffset = 0;
+        reset.hide();
+    });
+    reset.hide();
+    reset.parent("input")
+    createCanvas(windowWidth, 800);
 }
 function draw() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, 800);
     if (img && !ready) {
-        imageMode(CENTER)
-        let scalex = width/img.width
+        inp_head.html("Draw an Outline", false);
+        imageMode(CENTER);
+        let scalex = width/img.width;
         let scaley = height/img.height;
-        let scale = min(scalex, scaley)
-        image(img, width/2, height/2, img.width * scale, img.height * scale)
-        inp.hide()
-        sub.show()
+        let scale = min(scalex, scaley);
+        image(img, width/2, height/2, img.width * scale, img.height * scale);
+        inp.hide();
+        sub.show();
     }
     let LEN = test.length;
     if (ready) {
+        inp_head.html("Watch as Circles Redraw the Outline", false)
         strokeWeight(3)
         sub.hide();
         background(127);
-        let finX = windowWidth/2;
-        let finY = windowHeight/2;
+        let finX = width/2;
+        let finY = height/2;
         translate(finX,finY)
         finX = finY = 0
         let newPos = [];
@@ -73,6 +88,7 @@ function draw() {
         endShape();
         angleOffset += 2 * PI / LEN
     } else {
+        inp.show();
         strokeWeight(10)
         if (mouseIsPressed && img) {
             test.push([mouseX-width/2, mouseY-height/2])
@@ -136,6 +152,7 @@ function handleImage(file) {
     if (file.type != "image") {
         return alert("Submit an image to outline!")
     }
+    test = []
     img = createImg(file.data)
     img.hide()
 }
