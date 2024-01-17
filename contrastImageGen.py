@@ -1,5 +1,3 @@
-# Test Image Path: /home/KablammoMan/Pictures/discordStupid.png
-
 import cv2
 import tqdm
 import numpy as np
