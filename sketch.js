@@ -19,6 +19,7 @@ function setup() {
     inp.parent("input");
     sub.attribute("class", "btn btn-warning w-100");
     sub.mousePressed(() => {
+        inp_head.html("Watch as Circles Redraw the Outline", false)
         ready = true;
         dftTest = dftc(test);
         dftTest.sort((a,b) => b.amp-a.amp);
@@ -28,11 +29,11 @@ function setup() {
     sub.parent("input");
     reset.attribute("class", "btn btn-danger w-100");
     reset.mousePressed(() => {
+        inp_head.html("Upload an Image or Draw an Outline", false);
+        ready = false;
         test = [];
         pos = [];
         dftTest = [];
-        ready = false;
-        inp_head.html("Upload an Image", false);
         angleOffset = 0;
         reset.hide();
         sub.show();
@@ -44,7 +45,6 @@ function setup() {
 function draw() {
     resizeCanvas(windowWidth, 800);
     if (img && !ready) {
-        inp_head.html("Draw an Outline", false);
         imageMode(CENTER);
         let scalex = width/img.width;
         let scaley = height/img.height;
@@ -53,7 +53,6 @@ function draw() {
     }
     let LEN = test.length;
     if (ready) {
-        inp_head.html("Watch as Circles Redraw the Outline", false)
         strokeWeight(3)
         background(127);
         let finX = width/2;
