@@ -32,12 +32,12 @@
         </div>
     </nav>
     <!-- What is DFT? -->
-    <section class="py-3 bg-info" id="what">
+    <section class="py-5 bg-info" id="what">
         <div class="container-md">
-            <p class="fs-1 text-center mb-3 fw-bold">What on earth is DFT?</p>
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 mb-3">
-                    <p class="fs-6">
+                    <p class="fs-1 text-center mb-3 fw-bold">What on earth is DFT?</p>
+                    <p class="fs-5">
                         DFT stands for Discrete Fourier Transform and is used to split one wave into multiple waves of differing frequencies.
                         Although fourier transforms are technically calculated using integration, DFT uses summation so that it can be computed (computers unfortunately cannot count to infinity, which is required for integration).
                         The formula is pictured <span class="d-none d-md-inline">to the right</span><span class="d-md-none">below</span> and requires knowledge of the complex number system to use.
@@ -50,24 +50,27 @@
         </div>
     </section>
     <!-- How DFT is used here? -->
-    <section class="py-3" id="how">
+    <section class="py-5" id="how">
         <div class="container-md">
-            <p class="fs-1 text-center mb-3 fw-bold">How is DFT Utilised Here?</p>
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 mb-3">
-                    <p class="fs-6">
+                    <img class="img-fluid"src="dftc_algorithm.png">
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <p class="fs-1 text-center mb-3 fw-bold">How is DFT Utilised Here?</p>
+                    <p class="fs-5">
                         There are two ways that DFT can be utilised in this program.
                         <br>
                         <br>
-                        The algorithm pictured <span class="d-none d-md-inline">to the right</span><span class="d-md-none">below</span>
-                        is is the main function of this application. It takes in an list of coordinates as inputs, runs it through the DFT algorithm and outputs information to draw the multitude of waves (as circles).
+                        The algorithm pictured <span class="d-none d-md-inline">to the left</span><span class="d-md-none">above</span>
+                        is is the main function of this application. It takes in an list of coordinates as inputs, runs it through the DFT
+                        algorithm and outputs information to draw the multitude of waves (as circles).
                         <br>
                         <br>
-                        The second way (currently not implemented) is by just passing in a series of y coordinates, it can recreate any wave as a multitude of waves with differing frequencies (once again, depicted as circles) assuming that the previous points are moving away (x axis is time).
+                        The second way (currently not implemented) is by just passing in a series of y coordinates, it can recreate any wave
+                        as a multitude of waves with differing frequencies (once again, depicted as circles) assuming that points are moving
+                        away (as if the x axis were time).
                     </p>
-                </div>
-                <div class="col-12 col-md-6 mb-3">
-                    <img class="img-fluid"src="dftc_algorithm.png">
                 </div>
             </div>
         </div>
