@@ -1,4 +1,4 @@
-let test = []
+let test = [];
 const circle_rad_mod = 1; // Scales the drawing
 let ready = false;
 let reset;
@@ -19,7 +19,7 @@ function setup() {
     inp.parent("input");
     sub.attribute("class", "btn btn-warning w-100");
     sub.mousePressed(() => {
-        inp_head.html("Watch as Circles Redraw the Outline", false)
+        inp_head.html("Watch as Circles Redraw the Outline", false);
         ready = true;
         dftTest = dftc(test);
         dftTest.sort((a,b) => b.amp-a.amp);
@@ -39,7 +39,7 @@ function setup() {
         sub.show();
     });
     reset.hide();
-    reset.parent("input")
+    reset.parent("input");
     createCanvas(windowWidth, 800);
 }
 function draw() {
@@ -53,26 +53,26 @@ function draw() {
     }
     let LEN = test.length;
     if (ready) {
-        strokeWeight(3)
+        strokeWeight(3);
         background(127);
         let finX = width/2;
         let finY = height/2;
-        translate(finX,finY)
-        finX = finY = 0
+        translate(finX,finY);
+        finX = finY = 0;
         let newPos = [];
         for (let i = 0; i < LEN; i++) {
             let circ = dftTest[i];
-            let amp = circ.amp * circle_rad_mod
-            let omega = circ.ang + angleOffset * circ.frq
+            let amp = circ.amp * circle_rad_mod;
+            let omega = circ.ang + angleOffset * circ.frq;
             newPos = [amp * cos(omega), amp * sin(omega)]; // -amp => +y is up rather than down
             finX += newPos[0];
             finY += newPos[1];
             noFill();
-            stroke(255)
-            ellipse(0, 0, 2 * amp)
-            stroke(0,255,255)
-            line(0, 0, newPos[0], newPos[1])
-            translate(newPos[0], newPos[1])
+            stroke(255);
+            ellipse(0, 0, 2 * amp);
+            stroke(0,255,255);
+            line(0, 0, newPos[0], newPos[1]);
+            translate(newPos[0], newPos[1]);
         }
         pos.unshift([finX, finY]);
         translate(-finX, -finY);
@@ -82,20 +82,20 @@ function draw() {
             vertex(pos[i][0], pos[i][1]);
         }
         endShape();
-        angleOffset += 2 * PI / LEN
+        angleOffset += 2 * PI / LEN;
     } else {
         strokeWeight(10);
         if (mouseIsPressed && mouseX > 0 && mouseY > 0 && mouseX <= width && mouseY <= height) {
-            test.push([mouseX-width/2, mouseY-height/2])
+            test.push([mouseX-width/2, mouseY-height/2]);
         }
         if (frameCount % 10 == 0) {
             stroke(random(0, 255));
         }
         for (let pnti = 0; pnti < test.length; pnti++) {
             if (pnti == 0) {
-                line(width/2 + test[test.length-1][0], height/2 + test[test.length-1][1], width/2 + test[pnti][0], height/2 + test[pnti][1])
+                line(width/2 + test[test.length-1][0], height/2 + test[test.length-1][1], width/2 + test[pnti][0], height/2 + test[pnti][1]);
             } else {
-                line(width/2 + test[pnti-1][0], height/2 + test[pnti-1][1], width/2 + test[pnti][0], height/2 + test[pnti][1])
+                line(width/2 + test[pnti-1][0], height/2 + test[pnti-1][1], width/2 + test[pnti][0], height/2 + test[pnti][1]);
             }
         }
     }
@@ -117,8 +117,8 @@ function dftc(x){
         img /= N;
         let amp = sqrt(rel ** 2 + img ** 2);
         let frq = k;
-        let ang = atan2(img, rel)
-        X.push({rel, img, amp, frq, ang})
+        let ang = atan2(img, rel);
+        X.push({rel, img, amp, frq, ang});
     }
     return X;
 }
@@ -139,15 +139,16 @@ function dftr(x){
         let amp = sqrt(rel ** 2 + img ** 2);
         let frq = k;
         let ang = atan2(img, rel);
-        X.push({rel, img, amp, frq, ang})
+        X.push({rel, img, amp, frq, ang});
     }
     return X;
 }
 function handleImage(file) {
     if (file.type != "image") {
-        return alert("Submit an image to outline!")
+        return alert("Submit an image to outline!");
     }
-    test = []
-    img = createImg(file.data)
-    img.hide()
+    test = [];
+    img = createImg(file.data);
+    img.hide();
+    inp_head.html("Now draw an outline BEFORE clicking submit!", false);
 }
